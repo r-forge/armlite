@@ -1,14 +1,9 @@
 Package: armlite
-Version: 0.00-02
-Date: 2008-7-27
+Version: 0.00-03
+Date: 2008-11-08
 Title: Data Analysis Using Regression
 Author: Andrew Gelman <gelman@stat.columbia.edu>,
-        Yu-Sung Su <ys463@columbia.edu>,
-        Masanao Yajima <my2167@columbia.edu>,
-        Jennifer Hill <jh1030@columbia.edu>,
-        Maria Grazia Pittau <grazia@stat.columbia.edu>,
-        Jouni Kerman <jouni@kerman.com> and
-        Tian Zheng <tzheng@stat.columbia.edu>
+        Yu-Sung Su <ys463@columbia.edu>
 Maintainer: Yu-Sung Su <ys463@columbia.edu>
 Depends: methods, R (>= 2.6.0), MASS, R2WinBUGS
 Suggests: car, foreign
