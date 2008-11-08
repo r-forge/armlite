@@ -21,18 +21,19 @@ coefplot(object,\dots)
                 varnames=NULL, CI=2, vertical=TRUE, 
                 v.axis=TRUE, h.axis=TRUE,
                 cex.var=0.8, cex.pts=0.9, 
-                col.pts=1, var.las=2,
+                col.pts=1, pch.pts=20, var.las=2,
                 main=NULL, xlab=NULL, ylab=NULL, mar=c(1,3,5.1,2),
-                plot=TRUE, add=FALSE, epsilon=.1, \dots)
+                plot=TRUE, add=FALSE, offset=.1, \dots)
+
 \S4method{coefplot}{bugs}(object, var.idx=NULL, varnames=NULL, 
             CI=1, vertical=TRUE,
             v.axis=TRUE, h.axis=TRUE, 
             cex.var=0.8, cex.pts=0.9, 
-            col.pts=1, var.las=2, 
+            col.pts=1, pch.pts=20, var.las=2, 
             main=NULL, xlab=NULL, ylab=NULL, 
-            plot=TRUE, add=FALSE, epsilon=.1,
-            mar=c(1,3,5.1,2),\dots)
-            
+            plot=TRUE, add=FALSE, offset=.1,
+            mar=c(1,3,5.1,2), \dots)
+
 \S4method{coefplot}{numeric}(object, \dots)
 \S4method{coefplot}{lm}(object, varnames=NULL, intercept=FALSE, \dots)
 \S4method{coefplot}{glm}(object, varnames=NULL, intercept=FALSE, \dots)
@@ -57,6 +58,7 @@ coefplot(object,\dots)
   \item{cex.var}{The fontsize of the varible names, default=0.8.}
   \item{cex.pts}{The size of data points, default=0.9.}
   \item{col.pts}{color of points and segments, default is black.}
+  \item{pch.pts}{symbol of points, default is solid dot.}
   \item{var.las}{the orientation of variable names against the axis, default is 2. 
     see the usage of \code{las} in \code{\link{par}}.}
   \item{main}{The main title (on top) using font and size (character
@@ -69,7 +71,7 @@ coefplot(object,\dots)
           the four sides of the plot. The default is \code{c(1,3,5.1,2)}.}
   \item{plot}{default is TRUE, plot the estimates.}
   \item{add}{if add=TRUE, plot over the existing plot. default is FALSE.}
-  \item{epsilon}{add extra spaces to separate from the existing dots. default is 0.1.}
+  \item{offset}{add extra spaces to separate from the existing dots. default is 0.1.}
   \item{var.idx}{the index of the variables of a bugs object, default
         is NULL which will plot all the variables.}
   \item{intercept}{If TRUE will plot intercept, default=FALSE to get better presentation.}
