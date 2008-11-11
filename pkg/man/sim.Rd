@@ -27,10 +27,11 @@ sim(object, ...)
 }
 
 \value{
+  \item{coef}{matrix (dimensions n.sims x k) of n.sims random draws of coefficients.
+    In the previous version, the slot name is called \code{beta}.}
    \item{sigma}{vector of n.sims random draws of sigma
   (for glm's, this just returns a vector of 1's or else of the
   square root of the overdispersion parameter if that is in the model)}
-  \item{beta}{matrix (dimensions n.sims x k) of n.sims random draws of beta}
   }
 
 \references{Andrew Gelman and Jennifer Hill, 
@@ -56,6 +57,10 @@ sim(object, ...)
  M1 <- lm (y ~ x)
  display(M1)
  M1.sim <- sim(M1)
+ ## to get the uncertainty for the simulated estimates
+ apply(M1.sim$coef, 2, quantile)
+ quantile(M1.sim$sigma)
+
  
 # Logistic regression 
  y <- rbinom (n, 1, invlogit(2*x))
