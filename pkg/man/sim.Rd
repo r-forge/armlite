@@ -58,7 +58,7 @@ sim(object, ...)
  display(M1)
  M1.sim <- sim(M1)
  ## to get the uncertainty for the simulated estimates
- apply(M1.sim$coef, 2, quantile)
+ t(apply(M1.sim$coef, 2, quantile))
  quantile(M1.sim$sigma)
 
  
