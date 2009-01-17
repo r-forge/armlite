@@ -32,6 +32,12 @@ if (!isGeneric("se.coef")) {
 }
 
 
+if (!isGeneric("standardize")) {
+    setGeneric("standardize",
+               function(object, ...)
+               standardGeneric("standardize"))
+}
+
 
 if (!isGeneric("tracplot")) {
     setGeneric("traceplot",
