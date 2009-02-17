@@ -24,6 +24,7 @@ export(
        "bayesglm.fit",
        "bayespolr",
        "binnedplot",
+       "binned.resids",
        "coefplot",
        "coefplot.default",
        "contr.bayes.ordered",
