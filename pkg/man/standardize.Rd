@@ -27,7 +27,7 @@
 }
 
 \arguments{
-  \item{object}{an object of class \code{lm} or \code{glm}
+  \item{object}{an object of class \code{lm} or \code{glm}}
   \item{unchanged}{vector of names of parameters to leave unstandardized}
   \item{standardize.y}{ if TRUE, the outcome variable is standardized also}
   \item{binary.inputs}{options for standardizing binary variables}
