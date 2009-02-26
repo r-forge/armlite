@@ -3,8 +3,8 @@ setMethod("display", signature(object = "lm"),
     {
     call <- object$call
     summ <- summary (object)
-    coef <- summ$coef[,1:2,drop=FALSE]
-    dimnames(coef)[[2]] <- c("coef.est","coef.se")
+    coef <- summ$coef[,,drop=FALSE]
+    dimnames(coef)[[2]][1:2] <- c("coef.est","coef.se")
     n <- summ$df[1] + summ$df[2]
     k <- summ$df[1]
     print (call)
@@ -23,10 +23,10 @@ setMethod("display", signature(object = "bayesglm"),
     {
     call <- object$call
     summ <- summary(object, dispersion = object$dispersion)
-    coef <- matrix( NA, length( object$coefficients ),2 )
-    rownames(coef) <- names( object$coefficients )          ## M
-    dimnames(coef)[[2]] <- c( "coef.est", "coef.se" )
-    coef[ rownames( coef ) %in% rownames( summ$coef[, 1:2, drop = FALSE]) , ] <- summ$coef[ , 1:2, drop = FALSE ]  ## M
+    coef <- summ$coefficients
+#    rownames(coef) <- names( object$coefficients )          ## M
+    dimnames(coef)[[2]][1:2] <- c( "coef.est", "coef.se")
+    coef[ rownames( coef ) %in% rownames( summ$coef[, , drop = FALSE]) , ] <- summ$coef[ , , drop = FALSE ]  ## M
     #n <- summ$df[1] + summ$df[2]
     n <- summ$df.residual
     k <- summ$df[1]
@@ -58,8 +58,8 @@ setMethod("display", signature(object = "glm"),
     {
     call <- object$call
     summ <- summary(object, dispersion = object$dispersion)
-    coef <- summ$coef[, 1:2, drop = FALSE]
-    dimnames(coef)[[2]] <- c("coef.est", "coef.se")
+    coef <- summ$coef[, , drop = FALSE]
+    dimnames(coef)[[2]][1:2] <- c("coef.est", "coef.se")
     n <- summ$df[1] + summ$df[2]
     k <- summ$df[1]
     print(call)
@@ -84,13 +84,16 @@ setMethod("display", signature(object = "glm"),
 )
 
 
+
+
+
 setMethod("display", signature(object = "polr"),
     function(object, digits=2)
     {
     call <- object$call
     summ <- summary(object)
-    coef <- summ$coef[, 1:2, drop = FALSE]
-    dimnames(coef)[[2]] <- c("coef.est", "coef.se")
+    coef <- summ$coef[, , drop = FALSE]
+    dimnames(coef)[[2]][1:2] <- c("coef.est", "coef.se")
     n <- summ$n  
     k <- nrow (coef)
     k.intercepts <- length (summ$zeta)

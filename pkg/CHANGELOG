@@ -1,3 +1,7 @@
+2009-2-26 Yu-Sung Su     <ys463@columbia.edu>  
+    * DESCRIPTION (Version, Date): 0.0-11.
+    * R/display: print out t-value, z-value, p-value
+
 2009-2-4 Yu-Sung Su     <ys463@columbia.edu>  
     * DESCRIPTION (Version, Date): 0.0-10.
     * R/load.first: reset digit option to 5
