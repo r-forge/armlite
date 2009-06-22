@@ -1,3 +1,7 @@
+2009-6-22 Yu-Sung Su     <ys463@columbia.edu>  
+    * DESCRIPTION (Version, Date): 0.0-13
+    * R/display: new print out
+
 2009-2-26 Yu-Sung Su     <ys463@columbia.edu>  
     * DESCRIPTION (Version, Date): 0.0-11.
     * R/display: print out t-value, z-value, p-value

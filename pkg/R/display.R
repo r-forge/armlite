@@ -1,9 +1,14 @@
 setMethod("display", signature(object = "lm"),
-    function(object, digits=2)
+    function(object, digits=2, detail=FALSE)
     {
     call <- object$call
     summ <- summary (object)
-    coef <- summ$coef[,,drop=FALSE]
+    if(detail){
+      coef <- summ$coef[,,drop=FALSE]
+    }
+    else{
+      coef <- summ$coef[,1:2,drop=FALSE]
+    }
     dimnames(coef)[[2]][1:2] <- c("coef.est","coef.se")
     n <- summ$df[1] + summ$df[2]
     k <- summ$df[1]
@@ -19,14 +24,20 @@ setMethod("display", signature(object = "lm"),
 
 
 setMethod("display", signature(object = "bayesglm"),
-    function(object, digits=2)
+    function(object, digits=2, detail=FALSE)
     {
     call <- object$call
     summ <- summary(object, dispersion = object$dispersion)
-    coef <- summ$coefficients
-#    rownames(coef) <- names( object$coefficients )          ## M
+    if(detail){
+      coef <- summ$coefficients
+      coef[ rownames( coef ) %in% rownames( summ$coef[, , drop = FALSE]) , ] <- summ$coef[ , , drop = FALSE ] 
+    }
+    else{
+      coef <- matrix( NA, length( object$coefficients ),2 )
+      rownames(coef) <- names( object$coefficients )          ## M
+      coef[ rownames( coef ) %in% rownames( summ$coef[, 1:2, drop = FALSE]) , ] <- summ$coef[ , 1:2, drop = FALSE ]  ## M
+    }
     dimnames(coef)[[2]][1:2] <- c( "coef.est", "coef.se")
-    coef[ rownames( coef ) %in% rownames( summ$coef[, , drop = FALSE]) , ] <- summ$coef[ , , drop = FALSE ]  ## M
     #n <- summ$df[1] + summ$df[2]
     n <- summ$df.residual
     k <- summ$df[1]
@@ -54,11 +65,16 @@ setMethod("display", signature(object = "bayesglm"),
 
 
 setMethod("display", signature(object = "glm"),
-    function(object, digits=2)
+    function(object, digits=2, detail=FALSE)
     {
     call <- object$call
     summ <- summary(object, dispersion = object$dispersion)
-    coef <- summ$coef[, , drop = FALSE]
+    if(detail){
+      coef <- summ$coef[, , drop = FALSE]
+    }
+    else{
+      coef <- summ$coef[, 1:2, drop = FALSE]
+    }
     dimnames(coef)[[2]][1:2] <- c("coef.est", "coef.se")
     n <- summ$df[1] + summ$df[2]
     k <- summ$df[1]
@@ -84,15 +100,17 @@ setMethod("display", signature(object = "glm"),
 )
 
 
-
-
-
 setMethod("display", signature(object = "polr"),
-    function(object, digits=2)
+    function(object, digits=2, detail=FALSE)
     {
     call <- object$call
     summ <- summary(object)
-    coef <- summ$coef[, , drop = FALSE]
+    if(detail){
+      coef <- summ$coef[, , drop = FALSE]
+    }
+    else{
+      coef <- summ$coef[, 1:2, drop = FALSE]
+    }
     dimnames(coef)[[2]][1:2] <- c("coef.est", "coef.se")
     n <- summ$n  
     k <- nrow (coef)
@@ -108,3 +126,25 @@ setMethod("display", signature(object = "polr"),
     #cat("AIC:", fround(AIC(object), 1), "\n")
     }
 )
+
+
+#setMethod("display", signature(object = "bayespolr"),
+#    function(object, digits=2)
+#    {
+#    call <- object$call
+#    summ <- summary(object)
+#    coef <- summ$coef[, 1:2, drop = FALSE]
+#    dimnames(coef)[[2]] <- c("coef.est", "coef.se")
+#    n <- summ$n  # or maybe should be "nobs", I don't know for sure
+#    k <- nrow (coef)
+#    k.intercepts <- length (summ$zeta)
+#    print(call)
+#    pfround(coef, digits)
+#    cat("---\n")
+#    cat(paste("n = ", n, ", k = ", k, " (including ", k.intercepts,
+#        " intercepts)\nresidual deviance = ",
+#        fround(summ$deviance, 1), 
+#        ", null deviance is not computed by bayespolr",
+#        "\n", sep = ""))
+#    }
+#)
