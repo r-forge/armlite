@@ -11,7 +11,7 @@
 
 \title{Generic Function for Making Coefficient Plot}
 \description{
- Functions that plot the coefficients $\pm$ 1 and 2 sd 
+ Functions that plot the coefficients plus and minus 1 and 2 sd 
  from a lm, glm, bugs, and polr fits.
 }
 \usage{
