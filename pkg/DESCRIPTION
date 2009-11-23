@@ -1,6 +1,6 @@
 Package: armlite
-Version: 0.00-14
-Date: 2009-9-21
+Version: 0.00-15
+Date: 2009-11-22
 Title: Data Analysis Using Regression
 Author: Andrew Gelman <gelman@stat.columbia.edu>,
         Yu-Sung Su <ys463@columbia.edu>
@@ -10,3 +10,4 @@ Suggests: car, foreign
 Description: R functions for processing lm, glm, and polr outputs.
 URL: http://www.stat.columbia.edu/~gelman/software/
 License: GPL (>= 2)
+Packaged: 2009-11-23 00:36:12 UTC; yusung

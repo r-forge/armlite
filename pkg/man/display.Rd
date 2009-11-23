@@ -15,11 +15,11 @@
 \usage{
 display (object, ...)
 
-\S4method{display}{lm}(object, digits=2)
-\S4method{display}{bayesglm}(object, digits=2)
-\S4method{display}{bayesglm.h}(object, digits=2)
-\S4method{display}{glm}(object, digits=2)
-\S4method{display}{polr}(object, digits=2)
+\S4method{display}{lm}(object, digits=2, detail=FALSE)
+\S4method{display}{bayesglm}(object, digits=2, detail=FALSE)
+\S4method{display}{bayesglm.h}(object, digits=2, detail=FALSE)
+\S4method{display}{glm}(object, digits=2, detail=FALSE)
+\S4method{display}{polr}(object, digits=2, detail=FALSE)
 }
 
 \arguments{
@@ -27,6 +27,7 @@ display (object, ...)
     function with n data points and k predictors.}
   \item{...}{further arguments passed to or from other methods.}
   \item{digits}{number of significant digits to display.}
+  \item{detail}{defaul is \code{FALSE}, if \code{TRUE}, display p-values or z-values.}
   }
 
 \details{This generic function gives a
